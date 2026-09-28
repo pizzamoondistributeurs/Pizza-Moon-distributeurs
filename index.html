@@ -1,0 +1,1007 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PIZZA MOON — Distributeurs de pizzas artisanales</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #080808 url('https://uploads.onecompiler.io/453h8rkqn/453h8x5m5/554.jpg')
+        center / cover fixed no-repeat;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 6%;
+      background: rgba(8, 8, 8, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #1c1c1c;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      line-height: 1.1;
+    }
+
+    .logo span {
+      color: #b8b8b8;
+    }
+
+    .logo-pizza,
+    .logo-moon-initial {
+      color: #fff !important;
+    }
+
+    .logo-subtitle {
+      display: block;
+      width: 100%;
+      margin-top: 3px;
+      color: #888 !important;
+      font-size: 10px;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      font-size: 14px;
+      color: #cfcfcf;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 20px 50px;
+      background: radial-gradient(
+        circle at center,
+        rgba(26, 26, 26, 0.55),
+        rgba(8, 8, 8, 0.75) 48%
+      );
+    }
+
+    .hero-content {
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    .hero-image {
+      display: block;
+      width: 100%;
+      max-width: 1000px;
+      height: auto;
+      max-height: 600px;
+      object-fit: contain;
+      margin: 0 auto 30px;
+      border-radius: 16px;
+    }
+
+    .hero-description {
+      max-width: 700px;
+      margin: 0 auto 15px;
+      color: #999;
+      font-size: 16px;
+    }
+
+    .hero-artisanale {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      color: #d9d9d9;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 25px;
+      background: #b8b8b8;
+      color: #080808;
+      border-radius: 8px;
+      font-weight: 800;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 100px 6%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+
+    .section-title small {
+      display: block;
+      color: #d9d9d9;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .section-title h2 {
+      font-size: 56px;
+      line-height: 1.1;
+      font-weight: 900;
+      text-shadow: 0 3px 15px rgba(0, 0, 0, 0.8);
+    }
+
+    .section-title p {
+      color: #cfcfcf;
+      margin-top: 16px;
+      font-size: 17px;
+    }
+
+    #menu,
+    #distributeurs,
+    .offers,
+    .contact {
+      background: rgba(13, 13, 13, 0.75);
+    }
+
+    #menu {
+      padding-top: 40px;
+      padding-bottom: 60px;
+    }
+
+    .offers {
+      padding-top: 40px;
+    }
+
+    .contact {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+    /* PIZZAS */
+
+    .pizza-category {
+      max-width: 1200px;
+      margin: 0 auto 90px;
+    }
+
+    .category-title-left {
+      padding: 25px;
+      margin-bottom: 20px;
+      text-align: left;
+      background: rgba(17, 17, 17, 0.78);
+      border: 1px solid #222;
+      border-radius: 14px;
+    }
+
+    .category-title-left h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .category-title-left p {
+      color: #999;
+      font-size: 15px;
+    }
+
+    .pizza-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .pizza-card {
+      background: rgba(16, 16, 16, 0.78);
+      border: 1px solid #1e1e1e;
+      border-radius: 14px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .pizza-card:hover {
+      transform: translateY(-5px);
+      border-color: #b8b8b8;
+    }
+
+    .pizza-image {
+      position: relative;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle, #242424, #111);
+      overflow: hidden;
+    }
+
+    .pizza-image::before {
+      content: "";
+      position: absolute;
+      inset: -12px;
+      background: var(--pizza-bg) center / cover no-repeat;
+      filter: blur(14px);
+      opacity: 0.65;
+    }
+
+    .pizza-image img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .pizza-card:hover .pizza-image img {
+      transform: scale(1.05);
+    }
+
+    .pizza-info {
+      padding: 22px;
+    }
+
+    .pizza-info h3 {
+      font-size: 21px;
+      margin-bottom: 10px;
+    }
+
+    .pizza-info p {
+      color: #999;
+      font-size: 14px;
+    }
+
+    /* PRIX */
+
+    .pizza-prices {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid #2a2a2a;
+    }
+
+    .pizza-price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #cfcfcf;
+      font-size: 14px;
+    }
+
+    .pizza-price strong {
+      color: #fff;
+      font-size: 16px;
+    }
+
+    /* OFFRES */
+
+    .offer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .offer {
+      padding: 35px 25px;
+      background: rgba(17, 17, 17, 0.78);
+      border: 1px solid #222;
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    .offer-number {
+      font-size: 38px;
+      font-weight: 900;
+      color: #b8b8b8;
+      margin-bottom: 10px;
+    }
+
+    .offer h3 {
+      margin-bottom: 10px;
+    }
+
+    .offer p {
+      color: #999;
+      font-size: 14px;
+    }
+
+    .dlc-info {
+      max-width: 700px;
+      margin: 45px auto 0;
+      padding: 20px;
+      border-left: 3px solid #b8b8b8;
+      background: rgba(17, 17, 17, 0.78);
+      color: #999;
+      font-size: 14px;
+    }
+
+    .dlc-info strong {
+      color: #fff;
+    }
+
+    /* DISTRIBUTEURS */
+
+    .distributors {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .distributor {
+      padding: 30px;
+      background: rgba(16, 16, 16, 0.78);
+      border: 1px solid #1f1f1f;
+      border-radius: 14px;
+    }
+
+    .distributor h3 {
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .distributor p {
+      color: #888;
+      font-size: 14px;
+    }
+
+    .open-247 {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+      padding: 7px 12px;
+      border-radius: 30px;
+      background: rgba(69, 224, 111, 0.08);
+      border: 1px solid rgba(69, 224, 111, 0.25);
+      color: #65e88a;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background: #45e06f;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #45e06f;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      text-align: center;
+    }
+
+    .contact p {
+      color: #888;
+      margin-bottom: 15px;
+    }
+
+    .email {
+      display: inline-block;
+      font-size: 20px;
+      font-weight: bold;
+      color: #b8b8b8;
+      margin-bottom: 25px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 35px 20px;
+      text-align: center;
+      background: rgba(8, 8, 8, 0.85);
+      border-top: 1px solid #1b1b1b;
+      color: #666;
+      font-size: 13px;
+    }
+
+    footer strong {
+      color: #fff;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+
+      nav {
+        padding: 18px 5%;
+      }
+
+      nav ul {
+        gap: 12px;
+      }
+
+      nav ul li a {
+        font-size: 11px;
+      }
+
+      .logo {
+        font-size: 17px;
+      }
+
+      .hero {
+        padding: 110px 15px 40px;
+      }
+
+      .hero-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: none;
+        border-radius: 12px;
+        margin-bottom: 25px;
+      }
+
+      .hero-description {
+        font-size: 15px;
+      }
+
+      .hero-artisanale {
+        font-size: 15px;
+      }
+
+      section {
+        padding: 75px 5%;
+      }
+
+      .section-title {
+        margin-bottom: 50px;
+      }
+
+      .section-title small {
+        font-size: 12px;
+        letter-spacing: 3px;
+      }
+
+      .section-title h2 {
+        font-size: 40px;
+      }
+
+      .section-title p {
+        font-size: 15px;
+      }
+
+      .pizza-category {
+        margin-bottom: 70px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+    <div class="logo">
+      <span>◐ <span class="logo-pizza">PIZZA</span>
+      <span class="logo-moon">
+        <span class="logo-moon-initial">M</span>OON
+      </span></span>
+      <span class="logo-subtitle">DISTRIBUTEURS</span>
+    </div>
+
+    <ul>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#offres">Offres</a></li>
+      <li><a href="#distributeurs">Distributeurs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+
+  <header class="hero">
+    <div class="hero-content">
+
+      <img
+        src="https://uploads.onecompiler.io/453h8rkqn/453h8x5m5/3208.jpg"
+        alt="Pizza Moon — Distributeur de pizzas artisanales"
+        class="hero-image"
+      >
+
+     
+
+      <p class="hero-artisanale">
+        Des pizzas artisanales, préparées avec soin.
+      </p>
+
+      <a href="#menu" class="btn">
+        Découvrir nos pizzas
+      </a>
+
+    </div>
+  </header>
+
+  <!-- MENU -->
+
+  <section id="menu">
+
+    <div class="section-title">
+      <h2>NOS PIZZAS</h2>
+      <p>
+        Découvrez notre gamme de pizzas artisanales Pizza Moon.
+      </p>
+    </div>
+
+    <!-- BASE TOMATE -->
+
+    <div class="pizza-category">
+
+      <div class="category-title-left">
+        <h3>PIZZAS À BASE DE TOMATE</h3>
+        <p>Nos pizzas préparées avec une base tomate.</p>
+      </div>
+
+      <div class="pizza-grid">
+
+        <!-- MARGUERITA -->
+
+        <div class="pizza-card">
+          <div class="pizza-image" style="--pizza-bg: url('https://uploads.onecompiler.io/453h8rkqn/453h8x5m5/2088.jpg');">
+            <img
+              src="https://uploads.onecompiler.io/453h8rkqn/453h8x5m5/2088.jpg"
+              alt="Pizza Marguerita"
+            >
+          </div>
+
+          <div class="pizza-info">
+            <h3>Marguerita</h3>
+            <p>Base tomate · Mozzarella · Olives</p>
+
+            <div class="pizza-prices">
+              <div class="pizza-price">
+                Prix chaud <strong>11,50 €</strong>
+              </div>
+              <div class="pizza-price">
+                Prix froid <strong>11,00 €</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- REINE -->
+
+        <div class="pizza-card">
+          <div class="pizza-image" style="--pizza-bg: url('https://uploads.onecompiler.io/453h8rkqn/453h8x5m5/2068.png');">
+            <img
+              src="https://uploads.onecompiler.io/453h8rkqn/453h8x5m5/2068.png"
+              alt="Pizza Reine"
+            >
+          </div>
+
+          <div class="pizza-info">
+            <h3>Reine</h3>
+            <p>Base tomate · Champignons · Jambon · Mozzarella · Origan · Olives</p>
+
+            <div class="pizza-prices">
+              <div class="pizza-price">
+                Prix chaud <strong>12,00 €</strong>
+              </div>
+              <div class="pizza-price">
+                Prix froid <strong>11,50 €</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- KEBAB -->
+
+        <div class="pizza-card">
+          <div class="pizza-image" style="--pizza-bg: url('https://uploads.onecompiler.io/453h8rkqn/453h8x5m5/2120.jpg');">
+            <img
+              src="https://uploads.onecompiler.io/453h8rkqn/453h8x5m5/2120.jpg"
+              alt="Pizza Kebab"
+            >
+          </div>
+
+          <div class="pizza-info">
+            <h3>Kebab</h3>
+            <p>Base tomate · Kebab · Sauce kebab · Oignon · Mozzarella · Olives</p>
+
+            <div class="pizza-prices">
+              <div class="pizza-price">
+                Prix chaud <strong>13,00 €</strong>
+              </div>
+              <div class="pizza-price">
+                Prix froid <strong>12,50 €</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUPRÊME BURGER -->
+
+        <div class="pizza-card">
+          <div class="pizza-image" style="--pizza-bg: url('https://uploads.onecompiler.io/453h8rkqn/453h8x5m5/2111.jpg');">
+            <img
+              src="https://uploads.onecompiler.io/453h8rkqn/453h8x5m5/2111.jpg"
+              alt="Pizza Suprême Burger"
+            >
+          </div>
+
+          <div class="pizza-info">
+            <h3>Suprême Burger</h3>
+            <p>
+              Bacon · Bœuf haché halal · Sauce burger · Oignon · Cheddar · Mozzarella
+            </p>
+
+            <div class="pizza-prices">
+              <div class="pizza-price">
+                Prix chaud <strong>13,50 €</strong>
+              </div>
+              <div class="pizza-price">
+                Prix froid <strong>13,00 €</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BASE CRÈME -->
+
+    <div class="pizza-category">
+
+      <div class="category-title-left">
+        <h3>PIZZAS À BASE DE CRÈME</h3>
+        <p>Nos pizzas préparées avec une base crème.</p>
+      </div>
+
+      <div class="pizza-grid">
+
+        <!-- CHÈVRE MIEL -->
+
+        <div class="pizza-card">
+          <div class="pizza-image" style="--pizza-bg: url('https://uploads.onecompiler.io/453h8rkqn/453h8x5m5/2087.jpg');">
+            <img
+              src="https://uploads.onecompiler.io/453h8rkqn/453h8x5m5/2087.jpg"
+              alt="Pizza Chèvre Miel"
+            >
+          </div>
+
+          <div class="pizza-info">
+            <h3>Chèvre Miel</h3>
+            <p>Base crème · Miel · Chèvre · Mozzarella</p>
+
+            <div class="pizza-prices">
+              <div class="pizza-price">
+                Prix chaud <strong>12,00 €</strong>
+              </div>
+              <div class="pizza-price">
+                Prix froid <strong>11,50 €</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 FROMAGES -->
+
+        <div class="pizza-card">
+          <div class="pizza-image" style="--pizza-bg: url('https://uploads.onecompiler.io/453h8rkqn/453h8x5m5/2089.jpg');">
+            <img
+              src="https://uploads.onecompiler.io/453h8rkqn/453h8x5m5/2089.jpg"
+              alt="Pizza 3 Fromages"
+            >
+          </div>
+
+          <div class="pizza-info">
+            <h3>3 Fromages</h3>
+            <p>Base crème · Chèvre · Roquefort · Mozzarella</p>
+
+            <div class="pizza-prices">
+              <div class="pizza-price">
+                Prix chaud <strong>12,00 €</strong>
+              </div>
+              <div class="pizza-price">
+                Prix froid <strong>11,50 €</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MONTAGNARDE -->
+
+        <div class="pizza-card">
+          <div class="pizza-image" style="--pizza-bg: url('https://uploads.onecompiler.io/453h8rkqn/453h8x5m5/2067.png');">
+            <img
+              src="https://uploads.onecompiler.io/453h8rkqn/453h8x5m5/2067.png"
+              alt="Pizza Montagnarde"
+            >
+          </div>
+
+          <div class="pizza-info">
+            <h3>Montagnarde</h3>
+            <p>
+              Base crème · Reblochon · Pommes de terre · Lardons · Mozzarella
+            </p>
+
+            <div class="pizza-prices">
+              <div class="pizza-price">
+                Prix chaud <strong>12,50 €</strong>
+              </div>
+              <div class="pizza-price">
+                Prix froid <strong>12,00 €</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CANNIBALE -->
+
+        <div class="pizza-card">
+          <div class="pizza-image" style="--pizza-bg: url('https://uploads.onecompiler.io/453h8rkqn/453h8x5m5/2066.png');">
+            <img
+              src="https://uploads.onecompiler.io/453h8rkqn/453h8x5m5/2066.png"
+              alt="Pizza Cannibale"
+            >
+          </div>
+
+          <div class="pizza-info">
+            <h3>Cannibale</h3>
+            <p>
+              Base crème · Sauce barbecue · Poulet rôti halal · Bœuf haché halal
+              · Mozzarella · Merguez halal
+            </p>
+
+            <div class="pizza-prices">
+              <div class="pizza-price">
+                Prix chaud <strong>13,50 €</strong>
+              </div>
+              <div class="pizza-price">
+                Prix froid <strong>13,00 €</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CROUSTY CURRY -->
+
+        <div class="pizza-card">
+          <div class="pizza-image" style="--pizza-bg: url('https://uploads.onecompiler.io/453h8rkqn/453h8x5m5/2112.jpg');">
+            <img
+              src="https://uploads.onecompiler.io/453h8rkqn/453h8x5m5/2112.jpg"
+              alt="Pizza Crousty Curry"
+            >
+          </div>
+
+          <div class="pizza-info">
+            <h3>Crousty Curry</h3>
+            <p>
+              Base crème · Curry · Oignons · Poulet croustillant halal
+              · Mozzarella · Crème fraîche liquide
+            </p>
+
+            <div class="pizza-prices">
+              <div class="pizza-price">
+                Prix chaud <strong>13,50 €</strong>
+              </div>
+              <div class="pizza-price">
+                Prix froid <strong>13,00 €</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BBQ -->
+
+        <div class="pizza-card">
+          <div class="pizza-image" style="--pizza-bg: url('https://uploads.onecompiler.io/453h8rkqn/453h8x5m5/2053.png');">
+            <img
+              src="https://uploads.onecompiler.io/453h8rkqn/453h8x5m5/2053.png"
+              alt="Pizza BBQ"
+            >
+          </div>
+
+          <div class="pizza-info">
+            <h3>BBQ</h3>
+            <p>
+              Base crème · Sauce barbecue · Oignons · Poulet croustillant halal
+              · Mozzarella · Crème fraîche liquide
+            </p>
+
+            <div class="pizza-prices">
+              <div class="pizza-price">
+                Prix chaud <strong>13,50 €</strong>
+              </div>
+              <div class="pizza-price">
+                Prix froid <strong>13,00 €</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- OFFRES -->
+
+  <section id="offres" class="offers">
+
+    <div class="section-title">
+      <h2>NOS OFFRES</h2>
+      <p>Profitez de nos offres valables toute l'année.</p>
+    </div>
+
+    <div class="offer-grid">
+
+      <div class="offer">
+        <div class="offer-number">3 + 1</div>
+        <h3>3 achetées, la 4e offerte</h3>
+        <p>
+          Sélectionnez bien 4 pizzas pour bénéficier de la pizza gratuite.
+        </p>
+      </div>
+
+      <div class="offer">
+        <div class="offer-number">10 + 1</div>
+        <h3>Programme de fidélité</h3>
+        <p>
+          10 pizzas achetées = 1 pizza offerte.
+        </p>
+      </div>
+
+      <div class="offer">
+        <div class="offer-number">-10%</div>
+        <h3>Avant DLC</h3>
+        <p>
+          Profitez de 10 % de réduction sur les pizzas 8 heures avant leur DLC.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="dlc-info">
+      <strong>DLC — Date limite de consommation :</strong>
+      la DLC correspond à la date jusqu'à laquelle un produit peut être
+      consommé dans les conditions prévues de conservation.
+    </div>
+
+  </section>
+
+  <!-- DISTRIBUTEURS -->
+
+  <section id="distributeurs">
+
+    <div class="section-title">
+      <h2>NOS DISTRIBUTEURS</h2>
+      <p>
+        Retrouvez nos distributeurs à ces adresses.
+      </p>
+    </div>
+
+    <div class="distributors">
+
+      <div class="distributor">
+        <h3>Distributeur Pizza Moon — Grenade</h3>
+        <p>1 avenue Gascogne</p>
+
+        <div class="open-247">
+          <span class="status-dot"></span>
+          Ouvert 24h/24 · 7j/7
+        </div>
+      </div>
+
+      <div class="distributor">
+        <h3>Distributeur Pizza Moon — Pompignan</h3>
+        <p>321 route de Toulouse</p>
+
+        <div class="open-247">
+          <span class="status-dot"></span>
+          Ouvert 24h/24 · 7j/7
+        </div>
+      </div>
+
+      <div class="distributor">
+        <h3>Distributeur Pizza Moon — Finhan</h3>
+        <p>44 route départementale</p>
+
+        <div class="open-247">
+          <span class="status-dot"></span>
+          Ouvert 24h/24 · 7j/7
+        </div>
+      </div>
+
+      <div class="distributor">
+        <h3>Distributeur Pizza Moon — Fenouillet</h3>
+        <p>81 route de Paris</p>
+
+        <div class="open-247">
+          <span class="status-dot"></span>
+          Ouvert 24h/24 · 7j/7
+        </div>
+      </div>
+
+      <div class="distributor">
+        <h3>Distributeur Pizza Moon — Dieupentale</h3>
+        <p>17 route de Bordeaux</p>
+
+        <div class="open-247">
+          <span class="status-dot"></span>
+          Ouvert 24h/24 · 7j/7
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact" class="contact">
+
+    <div class="section-title">
+      <small>UNE QUESTION ?</small>
+      <h2>CONTACTEZ-NOUS</h2>
+    </div>
+
+    <p>
+      Pour toute demande d’information, n’hésitez pas à nous contacter à l’adresse e-mail indiquée ci-dessous..
+    </p>
+
+    <a href="Pizzamoondistributeurs@gmail.com" class="email">
+      Pizzamoondistributeurs@gmail.com
+    </a>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <p>
+      © 2026 <strong>Pizza Moon Distributeur</strong> — Tous droits réservés.
+    </p>
+  </footer>
+
+</body>
